@@ -103,7 +103,6 @@ function submitAll() {
     timestamp: new Date().toISOString()
   };
  
-<<<<<<< HEAD
 //   ── GOOGLE SHEETS WEBHOOK ──
 //   Uncomment and replace URL when ready:
   fetch('https://script.google.com/macros/s/AKfycbziSkBmFUfU9aOg10m3zPVt2HV1DN7cjfR_G51_BA5BKnlYgSIZx3Fbc40VaKUKGwa4VQ/exec', {
@@ -112,16 +111,7 @@ function submitAll() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
-=======
-  // ── GOOGLE SHEETS WEBHOOK ──
-  // Uncomment and replace URL when ready:
-  // fetch('YOUR_GOOGLE_SHEETS_WEBHOOK_URL', {
-  //   method: 'POST',
-  //   mode: 'no-cors',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(payload)
-  // });
->>>>>>> 78c691a83a21f46e1d6dc34a9099f5738d9777f1
+
  
   console.log('SafeTrade full submission:', JSON.stringify(payload, null, 2));
  
