@@ -22,46 +22,63 @@
   <div class="top-bar-fill" id="topFill"></div>
 </div>
 
-<div class="top-bar"><div class="top-bar-fill" id="topFill"></div></div>
- 
+
 <!-- ═══ 1. WELCOME ═══ -->
-<section class="screen s-welcome" data-s="0">
+<section class="screen s-welcome s-story" data-s="0">
   <div class="screen-inner">
     <div class="wlogo au"><svg viewBox="0 0 24 24" fill="none" stroke="#0B3D2C" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-    <h1 class="au d1">Welcome to<br><em>SafeTrade</em></h1>
-    <p class="wsub au d2">We're building something to make buying and selling on Facebook Marketplace safe for South Africans. But first — a quick story.</p>
+    <h1 class="au d1">We're building<br><em>SafeTrade</em></h1>
+    <p class="wsub au d2">A platform to make buying and selling on Facebook Marketplace safe for South Africans. <strong>But we won't build it blind.</strong></p>
     <div class="wstat au d3">
       <div class="wstat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B5A" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
       <div class="wstat-text"><strong>1 in 6</strong> Marketplace users globally have been scammed. In SA, it's likely worse.</div>
     </div>
+    <div class="wbadge au d4">
+      <div class="wbadge-inner">
+        <div class="wbadge-text">We're running a real investigation — your answers will directly shape what we build. You're not just filling a form. <strong>You're co-creating this.</strong></div>
+      </div>
+    </div>
+    <p class="wstory-tease au d5">But first — let us tell you a story.</p>
   </div>
-  <div class="scroll-cue">Scroll<div class="chev"></div></div>
+  <div class="scroll-cue">The story<div class="chev"></div></div>
 </section>
  
 <!-- ═══ 2. MEET JOHNSON ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="1">
+<section class="screen s-story" style="background:var(--bg2)" data-s="1">
   <div class="screen-inner">
-    <div class="ctag au"><span class="n">01</span> · A story you might know</div>
+    <div class="ctag au"><span class="n">01</span> · Meet Johnson</div>
     <div class="pcard au d1">
       <div class="pcard-top">
         <div class="avatar">J</div>
         <div><div class="pcard-name">Johnson Amsel</div><div class="pcard-sub">2nd Year Mechanical Engineering · Stellenbosch</div></div>
       </div>
-      <div class="pcard-bio au d2">Johnson's laptop just died — <strong>halfway through the semester.</strong> Between tuition, res fees, and textbooks, a new one is out of the question. He needs something solid, under R5,000, fast.</div>
+      <div class="pcard-bio au d2">It's Week 6 of semester. Assignments are stacking up. Johnson's laptop just <strong>gave up on him</strong> — screen flickering, then nothing. Dead.</div>
+    </div>
+    <div class="pcard-detail au d3">
+      <div class="pcard-detail-row"><span>Tuition. Res fees. Textbooks. <strong>His budget is tapped.</strong> A brand-new laptop is not happening.</span></div>
+      <div class="pcard-detail-row"><span>He has a design submission due in <strong>4 days</strong>. He needs something that works — <em>now</em>.</span></div>
+      <div class="pcard-detail-row"><span>Someone in his res says: <em>"Just check Facebook Marketplace, bro."</em></span></div>
     </div>
   </div>
-  <div class="scroll-cue">Keep going<div class="chev"></div></div>
+  <div class="scroll-cue">He opens the app<div class="chev"></div></div>
 </section>
  
-<!-- ═══ 3. THE FIND ═══ -->
-<section class="screen" data-s="2">
+<!-- ═══ 3. THE SCROLL ═══ -->
+<section class="screen s-story" data-s="2">
   <div class="screen-inner">
-    <div class="ctag au"><span class="n">02</span> · The find</div>
-    <div class="narr au d1">Johnson opens Marketplace. Scrolls past junk. Then — <span class="g">he sees it.</span></div>
-    <div class="lcard au d2">
+    <div class="ctag au"><span class="n">02</span> · The scroll</div>
+    <div class="narr au d1">He opens Marketplace. Starts scrolling.</div>
+    <div class="scroll-rejects au d2">
+      <div class="reject-item"><span class="rj-price">R12,500</span><span class="rj-name">MacBook Air M2</span><span class="rj-tag">way too much</span></div>
+      <div class="reject-item"><span class="rj-price">R8,200</span><span class="rj-name">Dell XPS 13</span><span class="rj-tag">nope</span></div>
+      <div class="reject-item"><span class="rj-price">R2,100</span><span class="rj-name">HP Laptop (broken screen)</span><span class="rj-tag">not even</span></div>
+    </div>
+    <div class="narr au d3" style="margin-top:4px"><em>"Nothing. Just overpriced stuff and broken junk."</em></div>
+    <div class="narr au d4" style="margin-top:14px">Then — <span class="g" style="font-weight:600">he sees it.</span></div>
+    <div class="lcard au d5">
       <div class="lcard-top"><div class="fb-d">f</div>Marketplace · Stellenbosch</div>
       <div class="lcard-body">
-        <div class="lcard-img">💻</div>
+        <div class="lcard-img" style="font-size:2rem;display:flex;align-items:center;justify-content:center">&#128187;</div>
         <div class="lcard-info">
           <h4>Lenovo ThinkPad T480</h4>
           <div class="lcard-price">R3,800</div>
@@ -70,55 +87,97 @@
         </div>
       </div>
     </div>
-    <div class="narr au d3" style="font-size:1rem;color:var(--text-dim)">Right laptop. Right price. <span class="b">10 min from campus.</span></div>
+    <div class="narr au d6" style="font-size:1rem;color:var(--text-dim)">Right laptop. Right price. <span class="b">10 min from campus.</span> He stares at it. <em>This is the one.</em></div>
   </div>
-  <div class="scroll-cue">Then...<div class="chev"></div></div>
+  <div class="scroll-cue">But then...<div class="chev"></div></div>
 </section>
  
-<!-- ═══ 4. THE FEAR ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="3">
+<!-- ═══ 4. JOHNSON'S FEAR ═══ -->
+<section class="screen s-story" style="background:var(--bg2)" data-s="3">
   <div class="screen-inner">
-    <div class="ctag"><span class="n">03</span> · But then...</div>
-    <div class="narr">He's about to message the seller. Then he stops. <span class="r">The thoughts hit.</span></div>
+    <div class="ctag"><span class="n">03</span> · His finger hovers over "Message"</div>
+    <div class="narr">He's about to tap. Then his brain kicks in. <span class="r">The thoughts hit, fast.</span></div>
     <div class="tlist">
-      <div class="tbub"><span class="ic">😰</span> What if the laptop doesn't work and the seller vanishes?</div>
-      <div class="tbub"><span class="ic">📱</span> What if they show a fake proof of payment?</div>
-      <div class="tbub"><span class="ic">⚠️</span> What if the meetup turns dangerous?</div>
-      <div class="tbub"><span class="ic">💸</span> R3,800 is everything I saved this semester.</div>
+      <div class="tbub">What if I pay and the seller just… disappears?</div>
+      <div class="tbub">What if the laptop looks fine but stops working the next day?</div>
+      <div class="tbub">What if this "meetup" is actually a setup — I get robbed, or worse?</div>
+      <div class="tbub">What if I get there and they say "sorry, already sold" — just wasted my time?</div>
+      <div class="tbub">R3,800. That's <em>everything</em> I have left this semester.</div>
     </div>
-    <div class="narr" style="margin-top:18px;font-size:1rem;color:var(--text-dim)">Johnson closes the app. The gap between him and that laptop is <span class="r">fear</span>.</div>
+    <div class="narr" style="margin-top:18px;font-size:1rem;color:var(--text-dim)">He closes the app. Sits with it. The laptop is right there — and he <span class="r">can't bring himself to buy it.</span></div>
+    <div class="relate-prompt">
+      <span>Does any of this sound familiar?</span>
+    </div>
   </div>
-  <div class="scroll-cue">What if...<div class="chev"></div></div>
+  <div class="scroll-cue">Now meet the seller<div class="chev"></div></div>
 </section>
  
-<!-- ═══ 5. THE SOLUTION ═══ -->
-<section class="screen" style="background:linear-gradient(180deg,var(--bg) 0%,#081410 100%)" data-s="4">
+<!-- ═══ 5. MEET PHUMELELE ═══ -->
+<section class="screen s-story" style="background:var(--bg)" data-s="4">
+  <div class="screen-inner">
+    <div class="ctag au"><span class="n">04</span> · Now meet the seller</div>
+    <div class="pcard au d1">
+      <div class="pcard-top">
+        <div class="avatar" style="background:linear-gradient(135deg,#1a4a3a,#00E88A)">P</div>
+        <div><div class="pcard-name">Phumelele Nkosi</div><div class="pcard-sub">CA(SA) · Manager at KPMG · Sandton</div></div>
+      </div>
+      <div class="pcard-bio au d2">Phumelele just got upgraded to a <strong>MacBook Pro</strong> for her new MC role. Her old Lenovo ThinkPad T480? Sitting on her desk, doing nothing. She listed it on Marketplace an hour ago — <strong>R3,800. Excellent condition.</strong></div>
+    </div>
+    <div class="pcard-detail au d3">
+      <div class="pcard-detail-row"><span>She's sharp, organised, and doesn't have time for nonsense. She just wants a clean, quick sale.</span></div>
+      <div class="pcard-detail-row"><span>Messages are already coming in. Three people interested. One wants to come <em>today</em>.</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">But she's thinking twice<div class="chev"></div></div>
+</section>
+
+<!-- ═══ 6. PHUMELELE'S FEARS ═══ -->
+<section class="screen s-story" style="background:var(--bg2)" data-s="5">
+  <div class="screen-inner">
+    <div class="ctag"><span class="n">05</span> · She's heard the stories</div>
+    <div class="narr">She wants to confirm the meetup. But before she replies — <span class="r">the stories she's heard start playing back.</span></div>
+    <div class="tlist">
+      <div class="tbub">What if they send a fake Capitec PoP — I hand over the laptop and the money never arrives?</div>
+      <div class="tbub">What if they come to pick up and <em>case the place</em> — then come back later?</div>
+      <div class="tbub">What if after the cash handover, they follow me — or it turns into a robbery?</div>
+      <div class="tbub">What if they confirm, I turn others away, and they just don't show up?</div>
+    </div>
+    <div class="narr" style="margin-top:18px;font-size:1rem;color:var(--text-dim)">She stares at the messages. <span class="r">She just wants to sell a laptop.</span> Why does it feel this complicated?</div>
+    <div class="relate-prompt">
+      <span>Sound familiar from the other side?</span>
+    </div>
+  </div>
+  <div class="scroll-cue">What if there was a better way<div class="chev"></div></div>
+</section>
+
+<!-- ═══ 6. THE SOLUTION ═══ -->
+<section class="screen s-story" style="background:linear-gradient(180deg,var(--bg) 0%,#081410 100%)" data-s="6">
   <div class="screen-inner">
     <div class="sec-label au"><span style="width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite"></span> SafeTrade</div>
-    <h2 class="au d1" style="font-family:'Newsreader',serif;font-size:1.55rem;font-weight:400;color:var(--white);margin-bottom:22px;line-height:1.2">What if his money was <em style="color:var(--green);font-style:italic">protected</em> until he got what he paid for?</h2>
-    <div class="flow au d2">
-      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div><div class="fl-line"></div></div><div class="fl-body"><h4>They agree on R3,800</h4><p>Both open SafeTrade.</p></div></div>
-      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div><div class="fl-line"></div></div><div class="fl-body"><h4>Johnson pays into SafeTrade</h4><p>Money held securely. Seller sees it's real.</p></div></div>
-      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div><div class="fl-line"></div></div><div class="fl-body"><h4>They meet. He tests the laptop.</h4><p>Everything checks out.</p></div></div>
-      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div><div class="fl-line"></div></div><div class="fl-body"><h4>Happy? Seller gets paid instantly.</h4><p>One tap. Done.</p></div></div>
-      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div></div><div class="fl-body"><h4>Something wrong? Full refund.</h4><p>Every rand back.</p></div></div>
+    <h2 class="au d1" style="font-family:'Newsreader',serif;font-size:1.55rem;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.2">What if <em style="color:var(--green);font-style:italic">both of them</em> could trade without fear?</h2>
+    <p class="au d2" style="font-size:0.9rem;color:var(--text-dim);margin-bottom:18px;line-height:1.6">Johnson needs to know his money is safe before he hands it over. Phumelele needs to know the payment is real before she opens her door. SafeTrade protects both.</p>
+    <div class="flow au d3">
+      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div><div class="fl-line"></div></div><div class="fl-body"><h4>They agree on R3,800</h4><p>Johnson and Phumelele both open SafeTrade.</p></div></div>
+      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div><div class="fl-line"></div></div><div class="fl-body"><h4>Johnson pays into escrow</h4><p>His money is held securely. Phumelele can see it's real — before she goes anywhere.</p></div></div>
+      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div><div class="fl-line"></div></div><div class="fl-body"><h4>They meet. Johnson tests the laptop.</h4><p>Works perfectly. Everyone's happy.</p></div></div>
+      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div><div class="fl-line"></div></div><div class="fl-body"><h4>Johnson confirms. Phumelele gets paid.</h4><p>Instantly. One tap.</p></div></div>
+      <div class="fl-item"><div class="fl-rail"><div class="fl-dot"></div></div><div class="fl-body"><h4>Something wrong? Full refund.</h4><p>Every rand back to Johnson. No arguments.</p></div></div>
     </div>
   </div>
   <div class="scroll-cue">Now your turn<div class="chev"></div></div>
 </section>
  
-<!-- ═══ 6. SURVEY INTRO ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="5">
+<!-- ═══ 7. SURVEY INTRO ═══ -->
+<section class="screen s-story" style="background:var(--bg2)" data-s="7">
   <div class="screen-inner sec-intro">
-    <div class="emoji">💬</div>
     <h2>We need your <em>honest</em> input</h2>
     <p style="margin-top:10px">A few quick questions to help us understand if this is something South Africa actually needs. Takes about 2 minutes. No sign-up needed yet.</p>
   </div>
   <div class="scroll-cue">Let's go<div class="chev"></div></div>
 </section>
  
-<!-- ═══ 7. SECTION 1: PROFILE ═══ -->
-<section class="screen" data-s="6">
+<!-- ═══ 8. Q1: AGE ═══ -->
+<section class="screen s-survey" data-s="8">
   <div class="screen-inner">
     <div class="sec-label">About You</div>
     <div class="qcount">Question 1 of 12</div>
@@ -129,12 +188,12 @@
       <div class="opt" onclick="pick(this,'age')"><span class="dot"></span>35–44<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'age')"><span class="dot"></span>45+<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-age" onclick="goNext(7)">Next →</button>
+    <button class="next-btn" id="nb-age" onclick="goNext(9)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 8. Q2: FREQUENCY ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="7">
+
+<!-- ═══ 9. Q2: FREQUENCY ═══ -->
+<section class="screen s-survey" style="background:var(--bg2)" data-s="9">
   <div class="screen-inner">
     <div class="sec-label">About You</div>
     <div class="qcount">Question 2 of 12</div>
@@ -145,12 +204,12 @@
       <div class="opt" onclick="pick(this,'freq')"><span class="dot"></span>Occasionally<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'freq')"><span class="dot"></span>Never<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-freq" onclick="goNext(8)">Next →</button>
+    <button class="next-btn" id="nb-freq" onclick="goNext(10)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 9. Q3: BOUGHT/SOLD ═══ -->
-<section class="screen" data-s="8">
+
+<!-- ═══ 10. Q3: BOUGHT/SOLD ═══ -->
+<section class="screen s-survey" data-s="10">
   <div class="screen-inner">
     <div class="sec-label">About You</div>
     <div class="qcount">Question 3 of 12</div>
@@ -159,29 +218,29 @@
       <div class="opt" onclick="pick(this,'online')"><span class="dot"></span>Yes<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'online')"><span class="dot"></span>No<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-online" onclick="goNext(9)">Next →</button>
+    <button class="next-btn" id="nb-online" onclick="goNext(11)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 10. Q4: SAFETY FEELING ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="9">
+
+<!-- ═══ 11. Q4: SAFETY FEELING ═══ -->
+<section class="screen s-survey" style="background:var(--bg2)" data-s="11">
   <div class="screen-inner">
     <div class="sec-label">🚨 The Problem</div>
     <div class="qcount">Question 4 of 12</div>
     <div class="qtitle">How safe do you feel using Facebook Marketplace?</div>
     <div class="opts" data-q="safety">
       <div class="opt" onclick="pick(this,'safety')"><span class="dot"></span>Very safe<span class="tick">✓</span></div>
-      <div class="opt" onclick="pick(this,'safety')"><span class="dot"></span>Somewhat safe<span class="tick">✓</span></div>
+      <div class="opt" onclick="pick(this,'safety')"><span class="dot"></span>Safe<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'safety')"><span class="dot"></span>Neutral<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'safety')"><span class="dot"></span>Unsafe<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'safety')"><span class="dot"></span>Very unsafe<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-safety" onclick="goNext(10)">Next →</button>
+    <button class="next-btn" id="nb-safety" onclick="goNext(12)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 11. Q5: SCAM EXPERIENCE ═══ -->
-<section class="screen" data-s="10">
+
+<!-- ═══ 12. Q5: SCAM EXPERIENCE ═══ -->
+<section class="screen s-survey" data-s="12">
   <div class="screen-inner">
     <div class="sec-label">🚨 The Problem</div>
     <div class="qcount">Question 5 of 12</div>
@@ -193,12 +252,12 @@
       <div class="opt" onclick="pick(this,'scammed')"><span class="dot"></span>No, never<span class="tick">✓</span></div>
     </div>
     <textarea class="q-text-input" id="scam-story" placeholder="What happened? (optional — but this really helps us)"></textarea>
-    <button class="next-btn" id="nb-scammed" onclick="goNext(11)">Next →</button>
+    <button class="next-btn" id="nb-scammed" onclick="goNext(13)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 12. Q6: TOP CONCERNS (multi) ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="11">
+
+<!-- ═══ 13. Q6: TOP CONCERNS (multi) ═══ -->
+<section class="screen s-survey" style="background:var(--bg2)" data-s="13">
   <div class="screen-inner">
     <div class="sec-label">🚨 The Problem</div>
     <div class="qcount">Question 6 of 12 <span class="optional-tag">Select all that apply</span></div>
@@ -210,12 +269,12 @@
       <div class="opt opt-multi" onclick="pickMulti(this,'concerns')"><span class="dot"></span>Product not as described<span class="tick">✓</span></div>
       <div class="opt opt-multi" onclick="pickMulti(this,'concerns')"><span class="dot"></span>No recourse if things go wrong<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-concerns" onclick="goNext(12)">Next →</button>
+    <button class="next-btn" id="nb-concerns" onclick="goNext(14)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 13. Q7: STOP USING ═══ -->
-<section class="screen" data-s="12">
+
+<!-- ═══ 14. Q7: STOP USING ═══ -->
+<section class="screen s-survey" data-s="14">
   <div class="screen-inner">
     <div class="sec-label">💥 How Bad Is It</div>
     <div class="qcount">Question 7 of 12</div>
@@ -225,12 +284,12 @@
       <div class="opt" onclick="pick(this,'stopuse')"><span class="dot"></span>Likely — it's getting worse<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'stopuse')"><span class="dot"></span>Not likely — I still use it carefully<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-stopuse" onclick="goNext(13)">Next →</button>
+    <button class="next-btn" id="nb-stopuse" onclick="goNext(15)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 14. Q8: CANCELLED DEAL ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="13">
+
+<!-- ═══ 15. Q8: CANCELLED DEAL ═══ -->
+<section class="screen s-survey" style="background:var(--bg2)" data-s="15">
   <div class="screen-inner">
     <div class="sec-label">💥 How Bad Is It</div>
     <div class="qcount">Question 8 of 12</div>
@@ -241,12 +300,12 @@
       <div class="opt" onclick="pick(this,'cancelled')"><span class="dot"></span>No, but I've thought about it<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'cancelled')"><span class="dot"></span>No<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-cancelled" onclick="goNext(14)">Next →</button>
+    <button class="next-btn" id="nb-cancelled" onclick="goNext(16)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 15. Q9: FEATURES (multi) ═══ -->
-<section class="screen" data-s="14">
+
+<!-- ═══ 16. Q9: FEATURES (multi) ═══ -->
+<section class="screen s-survey" data-s="16">
   <div class="screen-inner">
     <div class="sec-label">💰 The Solution</div>
     <div class="qcount">Question 9 of 12 <span class="optional-tag">Select all that apply</span></div>
@@ -258,12 +317,12 @@
       <div class="opt opt-multi" onclick="pickMulti(this,'features')"><span class="dot"></span>ID verification<span class="tick">✓</span></div>
       <div class="opt opt-multi" onclick="pickMulti(this,'features')"><span class="dot"></span>Ratings and reviews<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-features" onclick="goNext(15)">Next →</button>
+    <button class="next-btn" id="nb-features" onclick="goNext(17)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 16. Q10: WILLINGNESS TO PAY ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="15">
+
+<!-- ═══ 17. Q10: WILLINGNESS TO PAY ═══ -->
+<section class="screen s-survey" style="background:var(--bg2)" data-s="17">
   <div class="screen-inner">
     <div class="sec-label">💰 The Solution</div>
     <div class="qcount">Question 10 of 12</div>
@@ -275,12 +334,12 @@
       <div class="opt" onclick="pick(this,'price')"><span class="dot"></span>R20+<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'price')"><span class="dot"></span>A small % of the item price (4–7%)<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-price" onclick="goNext(16)">Next →</button>
+    <button class="next-btn" id="nb-price" onclick="goNext(18)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 17. Q11: WHEN PAY ═══ -->
-<section class="screen" data-s="16">
+
+<!-- ═══ 18. Q11: WHEN PAY ═══ -->
+<section class="screen s-survey" data-s="18">
   <div class="screen-inner">
     <div class="sec-label">💰 The Solution</div>
     <div class="qcount">Question 11 of 12</div>
@@ -290,27 +349,30 @@
       <div class="opt" onclick="pick(this,'whenpay')"><span class="dot"></span>After a successful transaction<span class="tick">✓</span></div>
       <div class="opt" onclick="pick(this,'whenpay')"><span class="dot"></span>Only for high-value items (R1,000+)<span class="tick">✓</span></div>
     </div>
-    <button class="next-btn" id="nb-whenpay" onclick="goNext(17)">Next →</button>
+    <button class="next-btn" id="nb-whenpay" onclick="goNext(19)">Next →</button>
   </div>
 </section>
- 
-<!-- ═══ 18. Q12: OPEN INSIGHT ═══ -->
-<section class="screen" style="background:var(--bg2)" data-s="17">
+
+<!-- ═══ 19. Q12: OPEN INSIGHT ═══ -->
+<section class="screen s-survey" style="background:var(--bg2)" data-s="19">
   <div class="screen-inner">
     <div class="sec-label">🧠 Your Thoughts</div>
     <div class="qcount">Question 12 of 12 <span class="optional-tag">Optional</span></div>
     <div class="qtitle">What would make you trust Facebook Marketplace more?</div>
     <textarea class="q-text-input" id="open-trust" placeholder="Tell us anything — your ideas matter here..."></textarea>
-    <button class="next-btn ready" onclick="goNext(18)" style="margin-top:18px">Finish Questions →</button>
+    <button class="next-btn ready" onclick="goNext(20)" style="margin-top:18px">Finish Questions →</button>
   </div>
 </section>
- 
-<!-- ═══ 19. ALMOST DONE ═══ -->
-<section class="screen sec-intro" data-s="18">
+
+<!-- ═══ 20. ALMOST DONE ═══ -->
+<section class="screen sec-intro" data-s="20">
   <div class="screen-inner" style="text-align:center">
-    <div class="emoji">🙌</div>
-    <h2>Almost done!<br><em>One last step.</em></h2>
-    <p style="font-size:0.9rem;color:var(--text-dim);line-height:1.6;margin-top:10px">Thank you for your honest answers — they genuinely help us build something that works. Just leave your details so we can reach you when SafeTrade goes live.</p>
+    <h2>Your input is in.<br><em>Here's what happens next.</em></h2>
+    <div class="why-block" style="text-align:left;margin-top:16px">
+      <div class="why-item"><span>You've just shared data that shapes what we build. Thank you.</span></div>
+      <div class="why-item"><span>We'll add you to our private early access list and reach out when SafeTrade goes live.</span></div>
+      <div class="why-item"><span>Early access users get their first escrow transaction completely free — no fee, no risk.</span></div>
+    </div>
     <div style="display:flex;align-items:center;gap:10px;justify-content:center;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-top:24px">
       <div style="flex:1;max-width:140px;height:5px;border-radius:5px;background:var(--surface2);overflow:hidden"><div style="width:90%;height:100%;border-radius:5px;background:var(--green);background-size:200% 100%;background-image:linear-gradient(90deg,var(--green) 0%,#4fffb0 50%,var(--green) 100%);animation:shimmer 2s ease infinite"></div></div>
       <span style="font-size:0.82rem;font-weight:600;color:var(--green)">90%</span>
@@ -318,31 +380,37 @@
   </div>
   <div class="scroll-cue">Last step<div class="chev"></div></div>
 </section>
- 
-<!-- ═══ 20. SIGNUP ═══ -->
-<section class="screen" style="background:linear-gradient(180deg,var(--bg2) 0%,#081410 100%)" data-s="19">
+
+<!-- ═══ 21. SIGNUP ═══ -->
+<section class="screen" style="background:linear-gradient(180deg,var(--bg2) 0%,#081410 100%)" data-s="21">
   <div class="screen-inner">
     <div class="signup-wrap" id="signupForm">
       <div class="signup-shield au"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h2 class="au d1">Secure your<br><em>first transaction</em></h2>
-      <p class="sub au d2">We'll reach out via WhatsApp when SafeTrade is ready. Your first transaction is completely free.</p>
+      <h2 class="au d1">One last thing —<br><em>who are we talking to?</em></h2>
+      <p class="sub au d2">Your name is enough. The number is optional — we understand that sharing contact details with strangers online is exactly the problem we're trying to solve.</p>
       <div class="fields au d3">
         <div class="fld"><input type="text" id="fname" placeholder="Your first name" oninput="checkReady()"></div>
-        <div class="fld"><span class="pre">+27</span><input type="tel" id="fphone" placeholder="71 234 5678" maxlength="12" oninput="fmtPh(this);checkReady()"></div>
+        <div class="fld fld-optional">
+          <span class="pre">+27</span>
+          <input type="tel" id="fphone" placeholder="71 234 5678" maxlength="12" oninput="fmtPh(this);checkReady()">
+          <span class="fld-opt-tag">optional</span>
+        </div>
       </div>
-      <button class="cta-btn au d4" id="ctaBtn" disabled onclick="submitAll()">Secure My Spot</button>
-      <p class="form-fine au d5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> No spam. Just a WhatsApp when we're live.</p>
+      <p class="phone-note au d4">If you leave a number, we'll send one WhatsApp when we launch — nothing else. Your number is never shared or sold.</p>
+      <button class="cta-btn au d5" id="ctaBtn" disabled onclick="submitAll()">Submit your answers</button>
+      <button class="cta-btn-anon au d6" id="anonBtn" onclick="submitAnon()">Submit without contact details</button>
+      <p id="submitMsg" class="submit-msg" style="display:none"></p>
     </div>
   </div>
 </section>
- 
-<!-- ═══ 21. THANK YOU ═══ -->
-<section class="screen s-thanks hidden" id="thanksScreen" data-s="20">
+
+<!-- ═══ 22. THANK YOU ═══ -->
+<section class="screen s-thanks hidden" id="thanksScreen" data-s="22">
   <div class="screen-inner">
     <div class="thanks-ck"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0B3D2C" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
     <h2>Thank you for<br>your time.</h2>
-    <p class="msg">You're on the SafeTrade early access list. We'll reach out via WhatsApp soon to let you know when you can secure your first transaction — completely free.</p>
-    <div class="wa-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Expect a WhatsApp from us soon</div>
+    <p class="msg" id="thanksMsg">Your input has been recorded. It will directly influence what SafeTrade becomes.</p>
+    <div class="wa-badge" id="waBadge" style="display:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>We'll reach out via WhatsApp when we launch</div>
     <div class="foot">&copy; 2026 SafeTrade · Built in South Africa</div>
   </div>
 </section>
