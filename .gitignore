@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Pipeline outputs, rebuilt on every run. Kept out of Git so survey
+# answers never get committed (see docs/4-runbook.md).
+data/landing/
+data/warehouse/

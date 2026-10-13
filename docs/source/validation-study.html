@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SafeTrade Validation Study</title>
+<style>
+@page {
+  size: A4;
+  margin: 22mm 20mm 22mm 20mm;
+  @bottom-left { content: "SafeTrade · Validation study v1.0"; font: 8pt Inter; color: #6b706e; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8pt Inter; color: #6b706e; }
+}
+@page cover { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
+
+:root { --ink: #111514; --ink2: #4a514e; --muted: #7a807d; --line: #dde2df;
+        --deep: #0B3D2C; --green: #00b86d; --tint: #eef7f2; --amber: #b7791f; --amberTint: #fdf6e7; }
+* { box-sizing: border-box; }
+html { font-family: Inter, sans-serif; font-size: 9.6pt; line-height: 1.5; color: var(--ink); }
+body { margin: 0; }
+h1, h2, h3 { color: var(--deep); line-height: 1.2; margin: 0; }
+h2 { font-size: 17pt; font-weight: 700; margin: 0 0 3mm; padding-top: 1mm; }
+h2 .n { color: var(--green); margin-right: 2.5mm; }
+h3 { font-size: 11pt; font-weight: 700; margin: 6mm 0 2mm; }
+p { margin: 0 0 2.6mm; }
+.lead { font-size: 11pt; color: var(--ink); margin-bottom: 4mm; }
+.section { page-break-before: always; }
+.muted { color: var(--muted); }
+ul, ol { margin: 0 0 3mm; padding-left: 5mm; }
+li { margin-bottom: 1.2mm; }
+strong { font-weight: 650; }
+
+table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 8.6pt; page-break-inside: auto; }
+tr { page-break-inside: avoid; }
+th { text-align: left; font-weight: 650; color: var(--deep); border-bottom: 1.4pt solid var(--deep); padding: 1.6mm 2mm; vertical-align: bottom; }
+td { border-bottom: 0.5pt solid var(--line); padding: 1.6mm 2mm; vertical-align: top; }
+td.num, th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td.q { white-space: nowrap; font-weight: 650; color: var(--deep); }
+
+.box { background: var(--tint); border-left: 2.5pt solid var(--green); padding: 3mm 4mm; margin: 3mm 0 4mm; page-break-inside: avoid; }
+.box.warn { background: var(--amberTint); border-left-color: var(--amber); }
+.box p:last-child, .box ul:last-child { margin-bottom: 0; }
+.tag { display: inline-block; font-size: 7.6pt; font-weight: 650; padding: 0.4mm 2mm; border-radius: 2mm; white-space: nowrap; }
+.yes { background: #dff3e8; color: #0b5a3a; }
+.part { background: #fdf0d5; color: #8a5a0b; }
+.no { background: #eceeed; color: #4a514e; }
+
+.flow { display: flex; gap: 2mm; margin: 3mm 0 4mm; }
+.flow div { flex: 1; background: var(--tint); border-top: 2pt solid var(--green); padding: 2.4mm 2.6mm; font-size: 8.2pt; }
+.flow b { display: block; color: var(--deep); font-size: 8.8pt; margin-bottom: 0.8mm; }
+.flow span { display: block; margin-top: 1.2mm; color: var(--muted); font-size: 7.6pt; }
+
+figure { margin: 3mm 0 4mm; page-break-inside: avoid; }
+figure img { width: 100%; }
+figcaption { font-size: 8pt; color: var(--muted); margin-top: 1mm; }
+
+/* Cover */
+.cover { page: cover; height: 297mm; background: #0A0D0C; color: #fff; padding: 30mm 22mm 24mm; position: relative; }
+.cover .brand { font-size: 11pt; font-weight: 700; letter-spacing: 0.04em; color: #00E88A; }
+.cover h1 { color: #fff; font-size: 30pt; font-weight: 800; margin: 52mm 0 6mm; line-height: 1.1; }
+.cover .sub { font-size: 13pt; color: rgba(255,255,255,0.75); max-width: 140mm; }
+.cover .rule { width: 22mm; height: 2pt; background: #00E88A; margin: 10mm 0; }
+.cover .meta { position: absolute; left: 22mm; bottom: 24mm; font-size: 9pt; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.cover .meta b { color: #fff; font-weight: 600; }
+
+.toc { margin-top: 4mm; }
+.toc div { display: flex; justify-content: space-between; border-bottom: 0.5pt solid var(--line); padding: 1.8mm 0; font-size: 10pt; }
+.toc a { color: var(--ink); text-decoration: none; }
+.toc div { position: relative; }
+.toc a::after { content: target-counter(attr(href), page); position: absolute; right: 0; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="brand">SafeTrade</div>
+  <h1>Validation study:<br>hypotheses, method<br>and survey design</h1>
+  <div class="sub">What we set out to test, why we tested it this way, how the questions were built, and what the first 58 responses tell us.</div>
+  <div class="rule"></div>
+  <div class="meta">
+    <b>Tshidiso Molefe</b><br>
+    Version 1.0 · 13 October 2026<br>
+    Companion to: SafeTrade Project Definition &amp; Validation Plan v1.0 (April 2026)<br>
+    Data collected 13–21 April 2026 · Code and data: github.com/mlftsh030/safetrade
+  </div>
+</section>
+
+<!-- CONTENTS + SUMMARY -->
+<section>
+  <h2>Contents</h2>
+  <div class="toc">
+    <div><a href="#s1">1. Summary</a></div>
+    <div><a href="#s2">2. The hypotheses</a></div>
+    <div><a href="#s3">3. Why this approach</a></div>
+    <div><a href="#s4">4. How the survey was designed</a></div>
+    <div><a href="#s5">5. How the data was collected and processed</a></div>
+    <div><a href="#s6">6. Results against each hypothesis</a></div>
+    <div><a href="#s7">7. What the design got wrong</a></div>
+    <div><a href="#s8">8. Decision and next steps</a></div>
+    <div><a href="#a1">Appendix: the full survey</a></div>
+  </div>
+
+  <h2 id="s1" style="margin-top:10mm"><span class="n">1</span>Summary</h2>
+  <p class="lead">Among people who actually use Facebook Marketplace, the safety problem is real and they would pay a small fee to fix it. Two of the proposal's three success criteria are met. The third, real behaviour, has not been tested yet.</p>
+
+  <table>
+    <tr><th>Hypothesis</th><th>Marketplace users</th><th>Verdict</th></tr>
+    <tr><td><strong>H1</strong> The safety problem is real and common</td><td>50% scammed or nearly · 64% cancelled a deal</td><td><span class="tag yes">Supported</span></td></tr>
+    <tr><td><strong>H2</strong> People would pay a small fee</td><td>92% would pay something</td><td><span class="tag yes">Supported, at low fees</span></td></tr>
+    <tr><td><strong>H3</strong> People want a third party to hold the money</td><td>80% chose escrow</td><td><span class="tag part">Partly supported</span></td></tr>
+    <tr><td><strong>H4</strong> People would add an extra step to their deals</td><td>—</td><td><span class="tag no">Not tested</span></td></tr>
+  </table>
+
+  <p>The survey was a <strong>story-led web prototype</strong>: before answering, people followed a student buyer and a working seller through the same risky deal, then saw how SafeTrade would protect both. This made an unfamiliar idea (escrow) easy to picture, and it also <strong>primed</strong> people, which likely pushed some answers up. That trade-off, and nine other design weaknesses, are set out honestly in section 7.</p>
+  <p>Two findings changed how the results are read. First, <strong>55% of respondents never use Facebook Marketplace</strong>, so results are reported for users and non-users separately. Second, the sample is small (26 users) and young (90% aged 18–24). The results are an <strong>early signal, not proof</strong>.</p>
+  <div class="box"><p><strong>Recommendation:</strong> follow the proposal's next phase. Run a "Pay securely" demand test aimed only at Marketplace users, with a fixed version of the survey (section 8).</p></div>
+</section>
+
+<!-- HYPOTHESES -->
+<section class="section">
+  <h2 id="s2"><span class="n">2</span>The hypotheses</h2>
+  <p class="lead">The proposal named four assumptions that must hold before anything is built. We turned each into a hypothesis that data could support or reject.</p>
+
+  <p>SafeTrade's idea is an escrow layer for Facebook Marketplace: the buyer pays into SafeTrade, the seller sees the money is real, they meet, and the money is released only when the buyer confirms the item. That only works as a business if four things are true:</p>
+
+  <table>
+    <tr><th style="width:9%">ID</th><th style="width:30%">Hypothesis</th><th style="width:31%">Supported if…</th><th style="width:15%">Tested by</th><th style="width:15%">Proposal link</th></tr>
+    <tr><td class="q">H1</td><td><strong>Problem.</strong> Marketplace users feel unsafe, have met scams, and it changes how they trade.</td><td>A majority feel unsafe (proposal criterion 1), and many have had a scam, a near-scam or cancelled a deal.</td><td>Q4, Q5, Q6, Q7, Q8</td><td>Assumption: perceived value of safety · Criterion 1</td></tr>
+    <tr><td class="q">H2</td><td><strong>Willingness to pay.</strong> Users would pay a small fee per deal for safety.</td><td>More than half would pay any fee. The proposal said "a meaningful portion" with no number, so <strong>50% is our stated assumption</strong>.</td><td>Q10, Q11</td><td>Assumption: willingness to pay · Criterion 2</td></tr>
+    <tr><td class="q">H3</td><td><strong>Trust in escrow.</strong> Users want a third party to hold their money until the deal is done.</td><td>Escrow is among the most wanted safety features.</td><td>Q9, Q11</td><td>Assumption: trust in platform</td></tr>
+    <tr><td class="q">H4</td><td><strong>Workflow adoption.</strong> Users would add an extra step to how they buy and sell.</td><td>People choose the safe option when it's offered, not just say they would.</td><td>Not in the survey; needs the demand test</td><td>Assumption: workflow adoption · Criterion 3</td></tr>
+  </table>
+
+  <h3>The null hypotheses</h3>
+  <p>For each hypothesis, the "nothing to see here" version is what would stop the project: most users feel safe enough (H1), would not pay anything (H2), or prefer simpler fixes like ratings or meeting in public (H3). The survey was designed so each of these could show up in the answers: every question has a "no" or "none" option, and escrow sits in a list next to cheaper alternatives.</p>
+
+  <h3>Who the hypotheses are about</h3>
+  <p>All four are about <strong>people who use Facebook Marketplace</strong>. Q2 ("How often do you use Facebook Marketplace?") defines that group. This matters later: more than half of the people who answered are not in it.</p>
+</section>
+
+<!-- APPROACH -->
+<section class="section">
+  <h2 id="s3"><span class="n">3</span>Why this approach</h2>
+  <p class="lead">The guiding rule from the proposal: <strong>validate the problem before building the solution</strong>. Spending months building an escrow platform for a problem people don't feel would be the most expensive way to learn.</p>
+
+  <h3>The options we considered</h3>
+  <table>
+    <tr><th style="width:20%">Option</th><th style="width:28%">Good for</th><th style="width:30%">Weak for</th><th style="width:22%">Decision</th></tr>
+    <tr><td><strong>Build the platform first</strong></td><td>Real behaviour with real money</td><td>Months of work and payment, legal and safety risk before knowing if anyone wants it</td><td>Rejected for now</td></tr>
+    <tr><td><strong>One-on-one interviews</strong></td><td>Deep "why"; hearing real scam stories</td><td>Slow, few people, hard to put a number on willingness to pay</td><td>Next step, to explain the survey results</td></tr>
+    <tr><td><strong>Plain Google Form</strong></td><td>Free and fast</td><td>Most people have never used escrow, so they can't judge it from one sentence. Low completion on phones.</td><td>Rejected</td></tr>
+    <tr><td><strong>Story-led web survey prototype</strong></td><td>Explains the idea in 2 minutes, works on a phone, gives countable answers, easy to share</td><td>The story can prime answers; says what people <em>say</em>, not what they <em>do</em></td><td><strong>Chosen</strong> for phases 1 and 2</td></tr>
+    <tr><td><strong>"Pay securely" landing page</strong></td><td>Real behaviour: clicks and sign-ups</td><td>Needs traffic from real Marketplace users</td><td>Planned for phase 3</td></tr>
+  </table>
+
+  <h3>Why the story-led prototype fit best</h3>
+  <ul>
+    <li><strong>People can't value what they can't picture.</strong> "Escrow" is an unfamiliar word for most students. A short story showed the problem and the fix in their own world: a student buying a laptop, a professional selling one.</li>
+    <li><strong>It tests two things at once.</strong> The proposal's phase 1 (is the problem real?) and phase 2 (would people pay?) are both covered in one 2-minute flow.</li>
+    <li><strong>It reaches people where they are.</strong> A link on a phone can be shared in WhatsApp groups and class chats, at no cost.</li>
+    <li><strong>It doubles as a concept test.</strong> If people understand the idea from the story, that's early evidence the product can be explained simply.</li>
+  </ul>
+
+  <div class="box warn"><p><strong>The trade-off we accepted.</strong> Showing the problem and the solution before the questions makes people think about danger and safety right before they answer. This likely raised the share who feel unsafe and who would pay. We accepted this to get people to understand the idea, but it means the results should be read as an upper bound. Section 7 sets out how a second version can measure this effect.</p></div>
+
+  <h3>Why a data pipeline instead of a spreadsheet</h3>
+  <p>The first analysis was a single notebook. It worked once, but had three mapping bugs that silently left people out, and no way to re-run safely as new answers arrived. We rebuilt it as an <strong>ELT pipeline</strong> (extract, load, then transform in SQL) with quality checks, so every number in this document can be traced to the data and re-created by anyone with one command. Section 5 summarises it.</p>
+</section>
+
+<!-- SURVEY DESIGN -->
+<section class="section">
+  <h2 id="s4"><span class="n">4</span>How the survey was designed</h2>
+  <p class="lead">The survey moves people through a fixed order: understand the problem, describe their own experience, then react to the solution. Each block feeds one or more hypotheses.</p>
+
+  <div class="flow">
+    <div><b>Hook</b>Why we're asking, and "you're co-creating this"<span>Screen 0</span></div>
+    <div><b>Story</b>Johnson the buyer, Phumelele the seller, then SafeTrade<span>Screens 1–6</span></div>
+    <div><b>About you</b>Age, Marketplace use, online buying<span>Q1–Q3</span></div>
+    <div><b>Problem</b>Feeling, experience, concerns<span>Q4–Q6 · H1</span></div>
+    <div><b>How bad</b>Does it change behaviour?<span>Q7–Q8 · H1</span></div>
+    <div><b>Solution</b>Features, price, timing<span>Q9–Q11 · H2, H3</span></div>
+    <div><b>Close</b>Open thoughts, optional contact<span>Q12 + contact</span></div>
+  </div>
+
+  <h3>The story: why two sides</h3>
+  <p>Scams on Marketplace hurt both sides: buyers lose money to sellers who vanish, and sellers hand over goods for fake proof of payment. So the story has two people. <strong>Johnson</strong>, a second-year student whose laptop died four days before a deadline, finds the right laptop at the right price and freezes at the thought of losing everything he has left. <strong>Phumelele</strong>, a busy professional selling the same laptop, worries about a fake Capitec proof of payment and about strangers coming to her home. The last screen shows SafeTrade protecting both. Each worry in the story matches a concern option in Q6, so people could recognise themselves in it.</p>
+
+  <h3>The design rules</h3>
+  <table>
+    <tr><th style="width:30%">Rule</th><th>Why</th></tr>
+    <tr><td>Problem before solution</td><td>Ask about people's own experience before showing what SafeTrade offers, so the solution questions come after they've thought about real risk. (The story still shows the solution first; see section 7.)</td></tr>
+    <tr><td>Severity before price</td><td>Q7 and Q8 ask whether the problem changes behaviour. A problem people put up with is not one they'll pay to fix.</td></tr>
+    <tr><td>One question per screen, 12 questions, about 2 minutes</td><td>Short and focused on a phone; a progress bar shows how much is left.</td></tr>
+    <tr><td>Closed answers, except the last</td><td>Answers can be counted and compared; one optional open question catches what we didn't think of.</td></tr>
+    <tr><td>Answers in everyday words</td><td>"Almost — I caught it in time" and "I'm almost done with it" sound like people talk, which makes picking the right one easier.</td></tr>
+    <tr><td>"Select all that apply" for concerns and features</td><td>Most people have more than one worry; forcing one choice would hide the second-biggest.</td></tr>
+    <tr><td>Both fixed and percentage fees</td><td>The proposal left the pricing model open, so Q10 offers rand amounts and a percentage of the item price.</td></tr>
+    <tr><td>Contact details last and optional</td><td>Asking for a phone number is exactly the kind of trust the product is about. People could submit with no details at all.</td></tr>
+  </table>
+
+  <h3>Question by question</h3>
+  <table>
+    <tr><th style="width:6%">Q</th><th style="width:32%">Question</th><th style="width:9%">Tests</th><th>Why we asked it</th></tr>
+    <tr><td class="q">1</td><td>What's your age group?</td><td>—</td><td>Describe the sample; check it isn't only one group.</td></tr>
+    <tr><td class="q">2</td><td>How often do you use Facebook Marketplace?</td><td>Segment</td><td>Defines the target group. Everything is reported for users and non-users.</td></tr>
+    <tr><td class="q">3</td><td>Have you ever bought or sold something online?</td><td>—</td><td>Separates people new to online trading from experienced ones.</td></tr>
+    <tr><td class="q">4</td><td>How safe do you feel using Facebook Marketplace?</td><td>H1</td><td>Directly measures criterion 1 on a 5-point scale.</td></tr>
+    <tr><td class="q">5</td><td>Have you ever experienced or nearly experienced a scam on Marketplace?</td><td>H1</td><td>Separates real experience from worry. "Nearly" counts, because a caught scam still costs trust.</td></tr>
+    <tr><td class="q">6</td><td>What concerns you most about Marketplace?</td><td>H1, H3</td><td>Which risks matter most. Escrow solves some (payment fraud) and not others (meeting strangers).</td></tr>
+    <tr><td class="q">7</td><td>How likely are you to stop using Marketplace because of safety concerns?</td><td>H1</td><td>Is the problem bad enough to drive people away?</td></tr>
+    <tr><td class="q">8</td><td>Have you ever cancelled a deal because you felt unsafe?</td><td>H1</td><td>A past action, not an opinion: the strongest problem evidence in the survey.</td></tr>
+    <tr><td class="q">9</td><td>What features would make you feel safer?</td><td>H3</td><td>Does escrow beat cheaper fixes like ratings, verification or safe meetup spots?</td></tr>
+    <tr><td class="q">10</td><td>How much would you pay per transaction for guaranteed safety?</td><td>H2</td><td>Criterion 2, and the price range for a first business model.</td></tr>
+    <tr><td class="q">11</td><td>When would you prefer to pay the safety fee?</td><td>H2, H3</td><td>Shapes the payment flow: charge up front, on release, or only for big items.</td></tr>
+    <tr><td class="q">12</td><td>What would make you trust Facebook Marketplace more? (optional, open)</td><td>—</td><td>Catches ideas outside our options. Kept private, because people may name others.</td></tr>
+  </table>
+</section>
+
+<!-- DATA -->
+<section class="section">
+  <h2 id="s5"><span class="n">5</span>How the data was collected and processed</h2>
+  <p class="lead">59 responses arrived between 13 and 21 April 2026. One was a repeat sent 14 seconds after the first, so <strong>58 responses</strong> were analysed.</p>
+
+  <h3>Collection</h3>
+  <p>The prototype is hosted on Netlify at safetradesa.netlify.app. When someone submits, the page sends their answers to a Google Apps Script, which adds a row to a private Google Sheet. People could leave a name and phone number to join an early-access list, or submit without any details.</p>
+
+  <h3>Processing</h3>
+  <div class="flow">
+    <div><b>Extract</b>Read the sheet, remove names, phone numbers and written stories, give each response an ID</div>
+    <div><b>Load</b>Store the answers unchanged in a DuckDB database; skip ones already loaded</div>
+    <div><b>Transform</b>SQL: clean answers into categories, split multi-choice answers, build summary tables</div>
+    <div><b>Check</b>11 quality checks; any error stops the run</div>
+    <div><b>Report</b>Findings and charts written by code</div>
+  </div>
+  <p>Every percentage uses <strong>the people who answered that question</strong> as its base, and the base is stored next to the number. Responses with identical answers sent within 2 minutes count once.</p>
+
+  <h3>Privacy</h3>
+  <p>Answers are personal information under POPIA. Personal details are removed in the very first step, before anything is saved. The sheet stays private, and the public dataset contains only the multiple-choice answers. Contact details were only used to count how many people chose to leave them.</p>
+
+  <h3>Who answered</h3>
+  <table>
+    <tr><th>Group</th><th class="num">Responses</th><th class="num">Share</th></tr>
+    <tr><td>Use Facebook Marketplace (daily, weekly or occasionally)</td><td class="num">26</td><td class="num">45%</td></tr>
+    <tr><td>Never use Facebook Marketplace</td><td class="num">32</td><td class="num">55%</td></tr>
+    <tr><td>Aged 18–24</td><td class="num">52</td><td class="num">90%</td></tr>
+    <tr><td>Aged 25–34</td><td class="num">6</td><td class="num">10%</td></tr>
+  </table>
+  <p>The sample is young and small. Nobody aged 35 or older answered, although the survey offered those options. The results describe young adults, most likely students, and not South African Marketplace users as a whole.</p>
+</section>
+
+<!-- RESULTS -->
+<section class="section">
+  <h2 id="s6"><span class="n">6</span>Results against each hypothesis</h2>
+  <p class="lead">Users and non-users answer very differently. Users are four times as likely to have been scammed or nearly scammed, which is what you'd expect if the problem is real and comes from using the platform.</p>
+
+  <figure>
+    <img src="../../reports/charts/users_vs_non_users.png" alt="Marketplace users vs non-users">
+    <figcaption>Share of people who answered each question. Users n = 26, non-users n = 32; each bar's base excludes people who skipped that question.</figcaption>
+  </figure>
+
+  <h3>H1 · The problem is real: <span class="tag yes">Supported</span></h3>
+  <table>
+    <tr><th>Measure</th><th class="num">Users</th><th class="num">All</th></tr>
+    <tr><td>Feel unsafe or very unsafe on Marketplace (Q4)</td><td class="num">58% (15 of 26)</td><td class="num">61%</td></tr>
+    <tr><td>Were scammed or nearly scammed on Marketplace (Q5)</td><td class="num">50% (13 of 26)</td><td class="num">30%</td></tr>
+    <tr><td>Have cancelled a deal because they felt unsafe (Q8)</td><td class="num">64% (16 of 25)</td><td class="num">45%</td></tr>
+    <tr><td>Likely to stop using Marketplace over safety (Q7)</td><td class="num">56% (14 of 25)</td><td class="num">73%</td></tr>
+  </table>
+  <p>Criterion 1 is met (58% is above 50%). The strongest evidence is Q8: nearly two in three users have walked away from a deal, which is lost value SafeTrade could recover. Top concerns across everyone: fake sellers (71%), item not as described (64%), payment fraud (48%), meeting strangers (45%), no recourse (38%).</p>
+
+  <h3>H2 · People would pay: <span class="tag yes">Supported, at low fees</span></h3>
+  <table>
+    <tr><th>Fee people chose (Q10)</th><th class="num">Users (n = 25)</th><th class="num">All (n = 56)</th></tr>
+    <tr><td>Nothing (R0)</td><td class="num">8%</td><td class="num">14%</td></tr>
+    <tr><td>R5 – R10</td><td class="num">36%</td><td class="num">27%</td></tr>
+    <tr><td>R10 – R20</td><td class="num">8%</td><td class="num">9%</td></tr>
+    <tr><td>R20 or more</td><td class="num">28%</td><td class="num">23%</td></tr>
+    <tr><td>4–7% of the item price</td><td class="num">20%</td><td class="num">27%</td></tr>
+  </table>
+  <p>Criterion 2 is met: 92% of users would pay something. But the most common choice is R5–R10, and stated willingness to pay is usually higher than real payment. On timing (Q11), 54% would pay after the deal, 26% before, and 19% only for items over R1,000.</p>
+
+  <h3>H3 · People want escrow: <span class="tag part">Partly supported</span></h3>
+  <p>Escrow was the most chosen safety feature: 80% of users and 80% of everyone, ahead of ratings (75%), safe meetup spots (71%), verified profiles (66%) and ID verification (62%). But wanting money held safely is not the same as trusting a <em>new, unknown company</em> to hold it. The survey never asked that directly, so H3 is only partly supported.</p>
+
+  <h3>H4 · People would add a step: <span class="tag no">Not tested</span></h3>
+  <p>No question measured behaviour. One weak signal exists: 25 of 58 people (43%) chose to leave a WhatsApp number for early access, even though giving a number to strangers is the very risk the survey is about. This was encouraged by an offer of a free first transaction, so it hints at interest but does not replace the demand test.</p>
+</section>
+
+<!-- CRITIQUE -->
+<section class="section">
+  <h2 id="s7"><span class="n">7</span>What the design got wrong</h2>
+  <p class="lead">Looking back at the survey with the data in hand, these are the weaknesses that most affect how far the results can be trusted, and how version 2 fixes each.</p>
+
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:27%">Weakness</th><th style="width:32%">Effect on results</th><th style="width:37%">Fix in version 2</th></tr>
+    <tr><td class="q">1</td><td>The story shows the problem and the solution <strong>before</strong> the questions</td><td>Primes people toward "unsafe" and "would pay"; results are likely an upper bound</td><td>Show the story to half of the people at random, after the questions for the other half, and compare</td></tr>
+    <tr><td class="q">2</td><td>No screening: non-users answered Marketplace questions</td><td>55% of answers come from outside the target group</td><td>If Q2 is "Never", skip to a short separate path</td></tr>
+    <tr><td class="q">3</td><td>The opening screen claims "1 in 6 Marketplace users globally have been scammed" with no source</td><td>Unsupported claim; adds to priming</td><td>Cite a source or remove it</td></tr>
+    <tr><td class="q">4</td><td>Price bands overlap (R10 and R20 each sit in two bands) and mix rands with percentages</td><td>A person willing to pay R10 could pick either band; % and rand can't be compared</td><td>Non-overlapping bands (R1–R9, R10–R19, R20+), and ask about fixed vs % in a separate question</td></tr>
+    <tr><td class="q">5</td><td>Q10 says "guaranteed safety"</td><td>Promises more than escrow can deliver; may raise the price people choose</td><td>"…for your money to be held until you receive the item"</td></tr>
+    <tr><td class="q">6</td><td>Stated, not real, willingness to pay</td><td>People usually pay less than they say</td><td>The demand test, with a real price shown</td></tr>
+    <tr><td class="q">7</td><td>Q11 mixes timing (before/after) with item value (R1,000+)</td><td>The 19% who chose "high-value only" said nothing about timing</td><td>Two questions: when to pay, and for which items</td></tr>
+    <tr><td class="q">8</td><td>Q7 answer labels carry opinions ("it's getting worse")</td><td>Nudges people toward agreeing it's bad</td><td>A plain 5-point likelihood scale</td></tr>
+    <tr><td class="q">9</td><td>Q9 has no "none of these" option, and H3 and H4 are never asked directly</td><td>Can't tell indifference from a skipped question; trust in a new company unknown</td><td>Add "None"; ask "Would you pay into an account held by a new company you haven't used before?"</td></tr>
+    <tr><td class="q">10</td><td>Small, young convenience sample; buyer or seller not asked</td><td>26 users is too few to split further; results describe students</td><td>Share in Marketplace community groups, aim for 100+ users, and ask "Do you mostly buy, sell or both?"</td></tr>
+    <tr><td class="q">11</td><td>Submit button can be tapped twice</td><td>One response arrived twice (fixed in the pipeline)</td><td>Disable the button after the first tap</td></tr>
+  </table>
+
+  <div class="box"><p><strong>Why list these.</strong> None of them make the findings useless: the gap between users and non-users is too large to come from wording alone. But they set how much weight the numbers can carry. Being clear about that is what makes the next decision sound.</p></div>
+</section>
+
+<!-- DECISION -->
+<section class="section">
+  <h2 id="s8"><span class="n">8</span>Decision and next steps</h2>
+  <p class="lead">Using the proposal's decision framework (Proceed, Refine, Reassess): <strong>proceed to phase 3, with a refined survey</strong>.</p>
+
+  <table>
+    <tr><th>Criterion (proposal §6.4)</th><th class="num">Result (users)</th><th>Status</th></tr>
+    <tr><td>1. A majority are concerned about transaction safety</td><td class="num">58% feel unsafe</td><td><span class="tag yes">Met</span></td></tr>
+    <tr><td>2. A meaningful portion are willing to pay (bar: 50%, our assumption)</td><td class="num">92% would pay a fee</td><td><span class="tag yes">Met</span></td></tr>
+    <tr><td>3. Observable interest in a "Pay securely" option</td><td class="num">—</td><td><span class="tag no">Not measured yet</span></td></tr>
+  </table>
+  <p>Criteria 1 and 2 support going ahead, but the evidence is early (26 users, primed answers). Building the platform now would skip the one test that measures behaviour. So the next steps are the cheapest ones that close the biggest gaps:</p>
+
+  <ol>
+    <li><strong>Fix the survey (version 2)</strong> using section 7: screen out non-users, random story order, clean price bands, direct questions on trust (H3) and buyer vs seller.</li>
+    <li><strong>Run the demand test.</strong> A "Pay securely" page with a real price (R10 per deal, from Q10), shared only in Marketplace groups. Measure clicks and sign-ups against visits. This tests H4 and criterion 3.</li>
+    <li><strong>Interview 5 to 10 users</strong> who were scammed or cancelled a deal, to understand what would make them trust a new company with their money.</li>
+    <li><strong>Re-run the pipeline</strong> on the new data. It is built to handle a second survey version and more responses without changes to the method.</li>
+  </ol>
+
+  <div class="box"><p><strong>What would change the decision.</strong> If the demand test shows few clicks from real Marketplace users, or version 2 (without priming) shows most users feel safe, the right move is to <strong>refine</strong> the idea (for example, verification instead of escrow) or <strong>reassess</strong> it, as the proposal sets out.</p></div>
+</section>
+
+<!-- APPENDIX -->
+<section class="section">
+  <h2 id="a1">Appendix: the full survey</h2>
+  <p class="muted">As shown in the prototype. Questions 1–11 were single choice unless marked; question 12 was optional free text.</p>
+  <table>
+    <tr><th style="width:5%">Q</th><th style="width:40%">Question</th><th>Answer options</th></tr>
+    <tr><td class="q">1</td><td>What's your age group?</td><td>18–24 · 25–34 · 35–44 · 45+</td></tr>
+    <tr><td class="q">2</td><td>How often do you use Facebook Marketplace?</td><td>Daily · Weekly · Occasionally · Never</td></tr>
+    <tr><td class="q">3</td><td>Have you ever bought or sold something online?</td><td>Yes · No</td></tr>
+    <tr><td class="q">4</td><td>How safe do you feel using Facebook Marketplace?</td><td>Very safe · Safe · Neutral · Unsafe · Very unsafe</td></tr>
+    <tr><td class="q">5</td><td>Have you ever experienced or nearly experienced a scam on Marketplace?</td><td>Yes — it happened to me · Almost — I caught it in time · No, but I worry about it · No, never</td></tr>
+    <tr><td class="q">6</td><td>What concerns you most about Marketplace? <span class="muted">(select all)</span></td><td>Fake sellers / listings · Payment fraud (fake proof of payment) · Meeting strangers in person · Product not as described · No recourse if things go wrong</td></tr>
+    <tr><td class="q">7</td><td>How likely are you to stop using Marketplace because of safety concerns?</td><td>Very likely — I'm almost done with it · Likely — it's getting worse · Not likely — I still use it carefully</td></tr>
+    <tr><td class="q">8</td><td>Have you ever cancelled a deal because you felt unsafe?</td><td>Yes — more than once · Yes — once · No, but I've thought about it · No</td></tr>
+    <tr><td class="q">9</td><td>What features would make you feel safer? <span class="muted">(select all)</span></td><td>Secure payment holding (escrow) · Verified user profiles · Safe meetup location suggestions · ID verification · Ratings and reviews</td></tr>
+    <tr><td class="q">10</td><td>How much would you pay per transaction for guaranteed safety?</td><td>R0 — I wouldn't pay · R5 – R10 · R10 – R20 · R20+ · A small % of the item price (4–7%)</td></tr>
+    <tr><td class="q">11</td><td>When would you prefer to pay the safety fee?</td><td>Before the transaction · After a transaction · Only for high-value items (R1,000+)</td></tr>
+    <tr><td class="q">12</td><td>What would make you trust Facebook Marketplace more?</td><td>Free text, optional</td></tr>
+  </table>
+  <h3>After the questions</h3>
+  <p>A thank-you screen offered early access with a free first escrow transaction, then asked for a name and an optional South African phone number for one WhatsApp message at launch. People could also submit without any contact details.</p>
+  <h3>Source of every number</h3>
+  <p>All figures come from the marts built by the SafeTrade pipeline (<span class="muted">reports/findings.md</span> in the repository), except the contact count in section 6, which was counted from the private sheet and is not part of the public data.</p>
+</section>
+
+</body>
+</html>

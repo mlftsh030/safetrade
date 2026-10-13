@@ -1,0 +1,4 @@
+Name,Phone,Timestamp,Age,Frequency,Bought Online,Safety Feeling,Scam Experience,Scam Story,Top Concerns,Stoped Using,Cancelled Deal,Wanted Features,Price Willing,When Pay,Trust Insight
+Test Person A,27000000001,2026-04-13T08:00:00.000Z,18–24,Weekly,Yes,Very Unsafe,Yes — it happened to me,story,"Fake sellers / listings, Payment fraud (fake proof of payment)",Very likely — I'm almost done with it,Yes — more than once,"Secure payment holding (escrow), ID verification",R10 – R20,After a transaction,insight
+Test Person B,,2026-04-13T09:00:00.000Z,25–34,Never,No,Safe,"No, Never",,Meeting strangers in person,Not likely — I still use it carefully,No,Ratings and reviews,R0 — I wouldn't pay,Before the transaction,
+Test Person C,,2026-04-13T10:00:00.000Z,18–24,Occasionally,Yes,Neutral,"No, but I worry about it",,,Likely — it's getting worse,"No, but I've thought about it",,A small % of the item price (4–7%),"Only for high-value items (R1,000+)",

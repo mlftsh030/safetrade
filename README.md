@@ -1,101 +1,129 @@
 # SafeTrade
 
-SafeTrade is a  project exploring how to improve trust and safety in peer-to-peer online marketplace transactions in South Africa, with an initial focus on platforms such as Facebook Marketplace.
+**Do people in South Africa want a safer way to buy and sell on Facebook Marketplace, and would they pay for it?**
 
-The project was initiated from a purchase experience that highlighted a broader issue: informal digital marketplaces often operate without reliable mechanisms for payment security, product assurance, or user accountability. SafeTrade approaches this problem methodically, moving from analysis and validation to system design and eventual implementation.
+SafeTrade started after a bad purchase of my own. Before building a payment platform, I tested the idea with data: a survey website to collect answers, and an **ELT data pipeline** that cleans, checks and analyses them, then scores the results against the success criteria in my [proposal](docs/FirstProposal.pdf).
 
----
-
-## Overview
-
-SafeTrade is developed as a staged process rather than a single build. The goal is to understand the problem, validate whether it is meaningful and widespread, and design a solution based on evidence.
-
-The project focuses on:
-- understanding transaction risks in informal marketplaces
-- validating user concerns and behaviours
-- testing whether a safer transaction process would be adopted
-- designing a system informed by research and data
+**Live survey prototype:** https://safetradesa.netlify.app/
+**Status:** paused (October 2026) · 58 responses · 2 of 3 success criteria met · decision: not moving forward for now ([findings and decision](docs/SafeTrade-Findings-and-Decision.pdf))
 
 ---
 
-## Problem Context
+## What the data says
 
-Peer-to-peer marketplaces allow individuals to transact directly, but they often lack:
+![Marketplace users vs non-users](reports/charts/users_vs_non_users.png)
 
-- secure payment handling
-- structured delivery coordination
-- user verification mechanisms
-- accountability after transaction failure
+- **The problem is real for actual users.** Among people who use Facebook Marketplace, **50% were scammed or nearly scammed**, and **64% have cancelled a deal** because they felt unsafe.
+- **People know what they want.** **80%** want their money held safely until the item arrives (escrow).
+- **They would pay, but only a little.** 86% would pay some fee, but the most common choices are R5–R10 or a small percentage.
+- **The survey reached the wrong people too.** 55% of respondents never use Facebook Marketplace. The pipeline caught this and now reports users and non-users separately.
 
-This creates exposure to:
-- payment fraud
-- misrepresented or non-delivered products
-- unsafe in-person exchanges
-- unresolved disputes
+Full results, made by the pipeline: [reports/findings.md](reports/findings.md)
 
-In the South African context, these risks can reduce confidence in online transactions, particularly for higher-value items.
+| Proposal success criterion | Result (Marketplace users) | Status |
+|---|---|---|
+| 1. A majority are concerned about safety | 58% feel unsafe | Met |
+| 2. A meaningful portion would pay | 92% would pay some fee | Met |
+| 3. People click a "Pay securely" option | Not tested yet | Next step |
 
----
-
-## Project Journey
-
-The project is developed across four stages:
-
-Analysis → Design → Implementation → Testing
-
-Each stage builds on the previous one and is supported by documentation.
+**Decision: not moving forward for now.** Under the proposal's framework the outcome is *Refine*: the results are mixed. The evidence rests on 26 Marketplace users whose answers were likely raised by the survey's story, the most common fee chosen (R5–R10) may not cover the cost of holding funds, and trust in a new platform was never tested. The project is paused, not closed: the [findings and decision report](docs/SafeTrade-Findings-and-Decision.pdf) sets out the conditions for revisiting it. The pipeline, data and documents are kept so work can resume without starting again.
 
 ---
 
-### 1. Analysis
+## How it works
 
-The analysis stage focuses on understanding the problem and validating assumptions before any system is built. This includes defining the nature of transaction risks and their impact on users, identifying the key stakeholders involved in marketplace transactions, outlining the core assumptions such as trust, willingness to pay, and workflow adoption, and examining adoption, operational, and trust-related risks that may affect the solution. It also involves designing a structured market validation approach to test both the problem and the proposed solution using user research and behavioural signals.
+```mermaid
+flowchart LR
+    U[Person] --> W[Survey website<br/>HTML, CSS, JS]
+    W -->|Apps Script| S[(Google Sheet)]
+    S -->|EXTRACT<br/>Python| L[Landing snapshot<br/>personal data removed]
+    L -->|LOAD| R[(raw)]
+    subgraph DuckDB warehouse
+    R -->|TRANSFORM<br/>SQL| ST[staging]
+    ST --> I[intermediate]
+    I --> M[marts]
+    end
+    M --> Q{Quality<br/>checks}
+    Q -->|pass| REP[Findings report<br/>+ charts]
+    Q -->|fail| X[Stop: nothing published]
+```
 
-#### Validation Prototype
+**The real tables, drawn from the code.** Every run reads the SQL files, works out which table feeds which, and redraws this map with the latest row counts ([reports/lineage.md](reports/lineage.md)). 59 responses go in; the fact table has 58 after one double submission is removed.
 
-As part of this stage, a lightweight prototype has been developed to collect data directly from users. The purpose of the prototype is to communicate the problem in a simple way and gather feedback on user experiences, concerns, and willingness to adopt a safer transaction process. Data collection is currently ongoing.
+![Pipeline lineage](docs/images/pipeline-lineage.png)
 
-The prototype is implemented as a web-based interface using vanilla HTML, CSS, and JavaScript. It presents a structured set of questions and captures user responses, which are stored using a simple backend setup integrated with Google Forms/Sheets.
+This is **ELT**: Extract the data, Load it raw into the warehouse, then Transform it with SQL inside the warehouse. Raw data is never changed, so any cleaning mistake can be fixed and re-run without collecting the survey again.
 
-Live prototype: https://safetradesa.netlify.app/
-
-#### Documentation
-
-All analysis-related work is documented in a single consolidated file:
-
-docs/analysis.md
-
-#### Data Collection
-
-User responses from the validation prototype are captured and stored in a structured format using Google Forms and Google Sheets. This allows responses to be collected in real time and organised for further analysis.
-
-The dataset is continuously updated as new responses are submitted through the prototype.
-
-Data source: [View collected responses](https://docs.google.com/spreadsheets/d/1r6E68lyiUEvV0gx1HkQS1EkL_OjyOrtwcKsYi4jsuqk/edit?usp=sharing)
+| Step | What happens | Code |
+|---|---|---|
+| Extract | Read the sheet, remove names and phone numbers, give each response a stable ID, save a snapshot | [`pipeline/extract.py`](pipeline/extract.py) |
+| Load | Copy the snapshot into DuckDB as raw text, skipping responses already loaded | [`pipeline/load.py`](pipeline/load.py) |
+| Transform | 8 SQL models in 3 layers: clean → reshape → answer questions | [`sql/`](sql/) |
+| Check | 11 data quality checks; an error stops the run | [`sql/tests/`](sql/tests/) |
+| Report | Findings page and charts, written from the marts | [`pipeline/report.py`](pipeline/report.py) |
+| Lineage | Map of every table, what it reads, and its row count, drawn from the SQL | [`pipeline/lineage.py`](pipeline/lineage.py) |
 
 ---
 
-## Repository Structure
+## Run it
+
+```bash
+pip install -r requirements.txt
+python -m pipeline.run          # runs on the anonymised sample in data/sample/
+pytest -q                       # 21 tests
+```
+
+**Or with Docker** (no Python needed):
+
+```bash
+docker build -t safetrade .
+docker run --rm -v "$(pwd)/reports:/app/reports" safetrade        # run the pipeline
+docker run --rm safetrade pytest -q                               # run the tests
+```
+
+Takes under a second. To run it on the live sheet, see the [runbook](docs/4-runbook.md).
+
+---
+
+## Read more
+
+| Doc | What's in it |
+|---|---|
+| [**Findings and decision (PDF)**](docs/SafeTrade-Findings-and-Decision.pdf) | What happened, what the data showed, and why SafeTrade is paused. LaTeX source in [`docs/final-report/`](docs/final-report/) |
+| [**Validation study (PDF)**](docs/SafeTrade-Validation-Study.pdf) | The hypotheses, why this approach, how the survey questions were designed, results, and what the design got wrong |
+| [1. Design](docs/1-design.md) | The problem, the rules I set, and why I chose each tool |
+| [2. Build](docs/2-build.md) | How each step and each SQL layer works |
+| [3. Testing](docs/3-testing.md) | Unit tests, data quality checks, and the bugs they caught |
+| [4. Runbook](docs/4-runbook.md) | How to run, add a question, fix common problems, hand over |
+| [5. Learnings](docs/5-learnings.md) | What went wrong, what I changed, what I'd do next time |
+| [Data engineering concepts](docs/data-engineering-concepts.md) | ETL vs ELT, layers, idempotency, data quality, in plain words |
+| [Data dictionary](docs/data-dictionary.md) | Every table and column |
+
+---
+
+## Folder guide
 
 ```text
 safetrade/
-├── app/                # frontend prototype
-├── docs/               # project documentation
-├── research/           # validation and analysis
-├── README.md
-└── proposal.pdf
+├── app/frontend/          survey prototype (deployed on Netlify)
+├── pipeline/              Python: extract, load, transform runner, checks, report
+├── sql/
+│   ├── staging/           clean one row per response
+│   ├── intermediate/      split multi-choice answers into rows
+│   ├── marts/             tables that answer the business questions
+│   └── tests/             data quality checks
+├── data/sample/           anonymised survey data (no names or phone numbers)
+├── reports/               findings, charts and quality report (written by the pipeline)
+├── tests/                 pytest tests with a made-up fixture
+├── notebooks/             v1: the first cleaning notebook, kept to show the starting point
+├── Dockerfile             runs the pipeline and tests in a container
+└── docs/                  findings & decision (PDF + LaTeX), validation study (PDF), design, build, testing, runbook, learnings
 ```
-## Current Status
 
-**Stage:** Analysis and Validation
+## Privacy
 
-The project is currently focused on:
-
-- understanding the problem  
-- collecting user data  
-- testing assumptions through a prototype  
-
-The next stage will depend on the outcome of the validation process.
+Survey answers are personal data, protected by POPIA. Names, phone numbers and written stories are removed in the **first** step, before anything is saved. The raw sheet is private. The public sample uses only the multiple-choice answers.
 
 ---
 
+Built by [Tshidiso Molefe](https://github.com/mlftsh030) · Tools: Python, pandas, DuckDB, SQL, pytest, matplotlib, Docker, Google Apps Script
