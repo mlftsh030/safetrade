@@ -1,0 +1,6 @@
+# Netlify deploys only the survey website in app/frontend.
+# Building from there also stops Netlify installing the pipeline's
+# Python packages from requirements.txt, which the site doesn't need.
+[build]
+  base = "app/frontend"
+  publish = "."
